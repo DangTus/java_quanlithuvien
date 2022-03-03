@@ -68,7 +68,6 @@ public class DocumentAdd extends javax.swing.JFrame {
         tenTLTextField = new javax.swing.JTextField();
         tenNXBTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        soLuongTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         loaiComboBox = new javax.swing.JComboBox<>();
@@ -86,6 +85,7 @@ public class DocumentAdd extends javax.swing.JFrame {
         ngayPhatHanhTextField = new javax.swing.JTextField();
         ngayPhatHanhLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
+        soLuongTextField = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,14 +98,14 @@ public class DocumentAdd extends javax.swing.JFrame {
         jLabel2.setText("Tên tài liệu");
 
         tenTLTextField.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        tenTLTextField.setMargin(new java.awt.Insets(2, 5, 2, 5));
 
         tenNXBTextField.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        tenNXBTextField.setMargin(new java.awt.Insets(2, 5, 2, 5));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Tên NXB");
-
-        soLuongTextField.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -127,12 +127,14 @@ public class DocumentAdd extends javax.swing.JFrame {
         tenTGLabel.setText("Tên tác giả");
 
         tenTGTextField.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        tenTGTextField.setMargin(new java.awt.Insets(2, 5, 2, 5));
 
         trangLabel.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         trangLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         trangLabel.setText("Số trang");
 
         trangTextField.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        trangTextField.setMargin(new java.awt.Insets(2, 5, 2, 5));
 
         taoButton.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         taoButton.setText("Tạo");
@@ -143,24 +145,28 @@ public class DocumentAdd extends javax.swing.JFrame {
         });
 
         soPhatHanhTextField.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        soPhatHanhTextField.setMargin(new java.awt.Insets(2, 5, 2, 5));
 
         soPhatHanhLabel.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         soPhatHanhLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         soPhatHanhLabel.setText("Số phát hành");
 
         thangPhatHanhTextField.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        thangPhatHanhTextField.setMargin(new java.awt.Insets(2, 5, 2, 5));
 
         thangPhatHanhLabel.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         thangPhatHanhLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         thangPhatHanhLabel.setText("Tháng phát hành");
 
         namPhatHanhTextField.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        namPhatHanhTextField.setMargin(new java.awt.Insets(2, 5, 2, 5));
 
         namPhatHanhLabel.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         namPhatHanhLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         namPhatHanhLabel.setText("Năm phát hành");
 
         ngayPhatHanhTextField.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        ngayPhatHanhTextField.setMargin(new java.awt.Insets(2, 5, 2, 5));
 
         ngayPhatHanhLabel.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         ngayPhatHanhLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -173,6 +179,10 @@ public class DocumentAdd extends javax.swing.JFrame {
                 backButtonActionPerformed(evt);
             }
         });
+
+        soLuongTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        soLuongTextField.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        soLuongTextField.setMargin(new java.awt.Insets(2, 5, 2, 5));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,15 +213,15 @@ public class DocumentAdd extends javax.swing.JFrame {
                                     .addComponent(thangPhatHanhTextField)
                                     .addComponent(trangTextField)
                                     .addComponent(tenTGTextField)
-                                    .addComponent(soLuongTextField)
                                     .addComponent(tenNXBTextField)
                                     .addComponent(loaiComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tenTLTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(soPhatHanhTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(tenTLTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                                    .addComponent(soPhatHanhTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                                    .addComponent(soLuongTextField)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(152, 152, 152)
                                 .addComponent(taoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 194, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,9 +231,9 @@ public class DocumentAdd extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -233,8 +243,8 @@ public class DocumentAdd extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tenNXBTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(soLuongTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -363,7 +373,7 @@ public class DocumentAdd extends javax.swing.JFrame {
     private javax.swing.JTextField namPhatHanhTextField;
     private javax.swing.JLabel ngayPhatHanhLabel;
     private javax.swing.JTextField ngayPhatHanhTextField;
-    private javax.swing.JTextField soLuongTextField;
+    private javax.swing.JFormattedTextField soLuongTextField;
     private javax.swing.JLabel soPhatHanhLabel;
     private javax.swing.JTextField soPhatHanhTextField;
     private javax.swing.JButton taoButton;
