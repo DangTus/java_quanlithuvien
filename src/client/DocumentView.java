@@ -13,7 +13,7 @@ public class DocumentView extends javax.swing.JFrame {
     DocumentService documentService;
     DefaultTableModel defaultTableModel;
 
-    public DocumentView() throws ClassNotFoundException, SQLException {
+    public DocumentView() throws ClassNotFoundException, SQLException{
         initComponents();
         documentService = new DocumentService();        
         defaultTableModel = new DefaultTableModel(){

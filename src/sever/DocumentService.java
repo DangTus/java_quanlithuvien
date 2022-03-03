@@ -12,7 +12,7 @@ public class DocumentService {
         documentDao = new DocumentDao();
     }
     
-    public List<Document> getAll(int idLoai) throws ClassNotFoundException, SQLException {
+    public List<Document> getAll(int idLoai) throws SQLException {
         return documentDao.getAll(idLoai);
     }
     
