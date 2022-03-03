@@ -4,14 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/TU/HOC%20TAP/221/th_jv_nc/JavaQuanLiThuVien/src/client/DocumentView.java</file>
-            <file>file:/D:/TU/HOC%20TAP/221/th_jv_nc/JavaQuanLiThuVien/src/model/Book.java</file>
-            <file>file:/D:/TU/HOC%20TAP/221/th_jv_nc/JavaQuanLiThuVien/src/model/News.java</file>
             <file>file:/D:/TU/HOC%20TAP/221/th_jv_nc/JavaQuanLiThuVien/src/dao/JDBCConnection.java</file>
             <file>file:/D:/TU/HOC%20TAP/221/th_jv_nc/JavaQuanLiThuVien/src/model/Document.java</file>
-            <file>file:/D:/TU/HOC%20TAP/221/th_jv_nc/JavaQuanLiThuVien/src/dao/DocumentDao.java</file>
             <file>file:/D:/TU/HOC%20TAP/221/th_jv_nc/JavaQuanLiThuVien/src/client/DocumentAdd.java</file>
+            <file>file:/D:/TU/HOC%20TAP/221/th_jv_nc/JavaQuanLiThuVien/src/dao/DocumentAddDao.java</file>
+            <file>file:/D:/TU/HOC%20TAP/221/th_jv_nc/JavaQuanLiThuVien/src/sever/DocumentAddService.java</file>
             <file>file:/D:/TU/HOC%20TAP/221/th_jv_nc/JavaQuanLiThuVien/src/sever/DocumentService.java</file>
-            <file>file:/D:/TU/HOC%20TAP/221/th_jv_nc/JavaQuanLiThuVien/src/model/Magazines.java</file>
         </group>
     </open-files>
 </project-private>

@@ -94,6 +94,7 @@ public class DocumentView extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("QUẢN LÍ SÁCH");
 
+        userTable.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         userTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
