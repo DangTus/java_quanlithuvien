@@ -26,19 +26,7 @@ public class DocumentService {
         return documentDao.getCategori();
     }
     
-//    public Document getUserById(int id) throws SQLException {
-//        return userDao.getUserById(id);
-//    }
-//    
-//    public int addUser(Document user) throws ClassNotFoundException, SQLException{
-//        return userDao.addUser(user);
-//    }
-//    
-//    public int deleteUser(int id) throws SQLException {
-//        return userDao.deleteUser(id);
-//    }
-//    
-//    public int updateUser(Document user) throws SQLException {
-//        return userDao.updateUser(user);
-//    }
+    public int deleteDocument(int id) throws SQLException {
+        return documentDao.deleteDocument(id);
+    }
 }

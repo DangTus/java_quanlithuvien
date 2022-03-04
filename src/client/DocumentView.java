@@ -209,37 +209,32 @@ public class DocumentView extends javax.swing.JFrame {
                 this.dispose(); // Đóng trang hiện tại
             } catch (SQLException ex) {
                 Logger.getLogger(DocumentView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
+            }            
         }
     }//GEN-LAST:event_viewButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
-//        int row = userTable.getSelectedRow(); //Xác định hàng mà mình đã chọn
-//        if(row == -1) {
-//            JOptionPane.showMessageDialog(this, "Chọn user cần xóa trước đi bạn ei", "Lỗi rồi bạn ei", JOptionPane.ERROR_MESSAGE);
-//        } else {
-//            int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa không?"); //Xác nhận xóa
-//            
-//            if(confirm == JOptionPane.YES_OPTION) {
-//                int id = Integer.valueOf(String.valueOf(userTable.getValueAt(row, 0)));
-//                
-//                try {
-//                    if(documentService.deleteUser(id) == 1) { //nếu hàm bên service trả về 1 thì là xóa thành công
-//                        JOptionPane.showMessageDialog(this, "Xóa thành công", "Thông báo", JOptionPane.CLOSED_OPTION);                        
-//                    } else {
-//                        JOptionPane.showMessageDialog(this, "Xóa không thành công", "Thông báo", JOptionPane.CLOSED_OPTION);
-//                    }
-//                    defaultTableModel.setRowCount(0); // reset dữ liệu về 0
-//                    showTableData(); // Gọi hàm đổ dữ liệu vào bảng
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(DocumentView.class.getName()).log(Level.SEVERE, null, ex);
-//                } catch (ClassNotFoundException ex) {
-//                    Logger.getLogger(DocumentView.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//        }
+        int row = userTable.getSelectedRow(); //Xác định hàng mà mình đã chọn
+        if(row == -1) {
+            JOptionPane.showMessageDialog(this, "Chọn tài liệu cần xóa trước đi bạn ei", "Lỗi rồi bạn ei", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa không?", "Thông báo", JOptionPane.YES_NO_OPTION); //Xác nhận xóa
+            
+            if(confirm == 0) {
+                int id = Integer.valueOf(String.valueOf(userTable.getValueAt(row, 0)));
+                try {
+                    int rs = documentService.deleteDocument(id);
+                    defaultTableModel.setRowCount(0); // reset dữ liệu về 0
+                    showTableData(0); // Gọi hàm đổ dữ liệu vào bảng  
+                } catch (SQLException ex) {
+                    Logger.getLogger(DocumentView.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(DocumentView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                              
+            }
+        }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void chonLoaiComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chonLoaiComboboxActionPerformed

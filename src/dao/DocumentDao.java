@@ -61,4 +61,18 @@ public class DocumentDao {
         
         return categories;
     }
+    
+    public int deleteDocument(int id) throws SQLException {    
+        Connection con = JDBCConnection.getJDBCConnection();
+        
+        String sql = "DELETE FROM tai_lieu WHERE id = ?";
+        
+        PreparedStatement preparedStatement = con.prepareStatement(sql);
+        
+        preparedStatement.setInt(1, id);
+        
+        int rs = preparedStatement.executeUpdate();
+        
+        return rs;
+    }
 }

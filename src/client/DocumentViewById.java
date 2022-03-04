@@ -12,7 +12,6 @@ import sever.DocumentUpdateService;
 import sever.GetDocumentByIdService;
 
 public class DocumentViewById extends javax.swing.JFrame {
-    String ngayHienTai = String.valueOf(java.time.LocalDate.now());
     GetDocumentByIdService getDocumentByIdService;
     Book book = null;
     News news = null;
@@ -61,9 +60,6 @@ public class DocumentViewById extends javax.swing.JFrame {
                 soLuongTextField.setText(String.valueOf(news.getSoLuong()));
                 loaiTextField.setText("Báo");
                 ngayPhatHanhTextField.setText(news.getNgayPhatHanh());
-                if(!ngayPhatHanhTextField.getText().equals(ngayHienTai)) {
-                    ngayPhatHanhTextField.setForeground(new Color(0, 0, 0));
-                }
                 
                 break;
                 
@@ -153,7 +149,6 @@ public class DocumentViewById extends javax.swing.JFrame {
         namPhatHanhLabel.setText("Năm phát hành");
 
         ngayPhatHanhTextField.setEditable(false);
-        ngayPhatHanhTextField.setForeground(new java.awt.Color(153, 153, 153));
         ngayPhatHanhTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("y-MM-dd"))));
         ngayPhatHanhTextField.setEnabled(false);
         ngayPhatHanhTextField.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
@@ -416,18 +411,10 @@ public class DocumentViewById extends javax.swing.JFrame {
 
     private void ngayPhatHanhTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ngayPhatHanhTextFieldFocusGained
         // TODO add your handling code here:
-        if(ngayHienTai.equals(ngayPhatHanhTextField.getText())) {
-            ngayPhatHanhTextField.setText("");
-            ngayPhatHanhTextField.setForeground(new Color(0, 0, 0));
-        }
     }//GEN-LAST:event_ngayPhatHanhTextFieldFocusGained
 
     private void ngayPhatHanhTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ngayPhatHanhTextFieldFocusLost
         // TODO add your handling code here:
-        if(ngayPhatHanhTextField.getText().equals("")) {
-            ngayPhatHanhTextField.setText(ngayHienTai);
-            ngayPhatHanhTextField.setForeground(new Color(153, 153, 153));
-        }
     }//GEN-LAST:event_ngayPhatHanhTextFieldFocusLost
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
