@@ -64,7 +64,7 @@ public class DocumentView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         userTable = new javax.swing.JTable();
-        updateButton = new javax.swing.JButton();
+        viewButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         chonLoaiCombobox = new javax.swing.JComboBox<>();
         exitButton = new javax.swing.JButton();
@@ -105,11 +105,11 @@ public class DocumentView extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(userTable);
 
-        updateButton.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        updateButton.setText("Sửa");
-        updateButton.addActionListener(new java.awt.event.ActionListener() {
+        viewButton.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        viewButton.setText("Xem chi tiết");
+        viewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateButtonActionPerformed(evt);
+                viewButtonActionPerformed(evt);
             }
         });
 
@@ -153,9 +153,9 @@ public class DocumentView extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(addButton)
-                        .addGap(137, 137, 137)
-                        .addComponent(updateButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewButton)
+                        .addGap(116, 116, 116)
                         .addComponent(deleteButton)
                         .addGap(139, 139, 139)
                         .addComponent(exitButton)))
@@ -175,7 +175,7 @@ public class DocumentView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -196,22 +196,23 @@ public class DocumentView extends javax.swing.JFrame {
         this.dispose(); // Đóng trang hiện tại
     }//GEN-LAST:event_addButtonActionPerformed
 
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+    private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
         // TODO add your handling code here:
-//        int row = userTable.getSelectedRow(); //Xác định hàng mà mình đã chọn
-//        if(row == -1) {
-//            JOptionPane.showMessageDialog(this, "Chọn user cần sửa trước đi bạn ei", "Lỗi rồi bạn ei", JOptionPane.ERROR_MESSAGE);
-//        } else {
-//            int id = Integer.valueOf(String.valueOf(userTable.getValueAt(row, 0)));
-//            
-//            try {
-//                new UserUpdate(id).setVisible(true); // Chuyển qua trang update
-//                this.dispose(); // Đóng trang hiện tại
-//            } catch (SQLException ex) {
-//                Logger.getLogger(DocumentView.class.getName()).log(Level.SEVERE, null, ex);
-//            }            
-//        }
-    }//GEN-LAST:event_updateButtonActionPerformed
+        int row = userTable.getSelectedRow(); //Xác định hàng mà mình đã chọn
+        if(row == -1) {
+            JOptionPane.showMessageDialog(this, "Chọn tài liệu cần xem trước đi bạn ei", "Lỗi rồi bạn ei", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int id = Integer.valueOf(String.valueOf(userTable.getValueAt(row, 0)));
+            
+            try {
+                new DocumentViewById(id).setVisible(true); // Chuyển qua trang xem
+                this.dispose(); // Đóng trang hiện tại
+            } catch (SQLException ex) {
+                Logger.getLogger(DocumentView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+    }//GEN-LAST:event_viewButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
@@ -329,7 +330,7 @@ public class DocumentView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton refreshButton;
-    private javax.swing.JButton updateButton;
     private javax.swing.JTable userTable;
+    private javax.swing.JButton viewButton;
     // End of variables declaration//GEN-END:variables
 }
