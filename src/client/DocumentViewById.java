@@ -12,31 +12,32 @@ import sever.DocumentUpdateService;
 import sever.GetDocumentByIdService;
 
 public class DocumentViewById extends javax.swing.JFrame {
+
     GetDocumentByIdService getDocumentByIdService;
     Book book = null;
     News news = null;
     Magazines magazines = null;
     int id_loai;
     DocumentUpdateService documentUpdateService;
-    
+
     public DocumentViewById(int id) throws SQLException {
         getDocumentByIdService = new GetDocumentByIdService(id);
-        
+
         initComponents();
-        
+
         editButton.setVisible(false);
-        
+
         id_loai = getDocumentByIdService.getIdLoai();
-        switch(id_loai) {
+        switch (id_loai) {
             case 1:
                 book = getDocumentByIdService.getBook();
-                
+
                 hidden();
                 tenTGTextField.setVisible(true);
                 tenTGLabel.setVisible(true);
                 trangTextField.setVisible(true);
                 trangLabel.setVisible(true);
-                
+
                 maTLTextField.setText(String.valueOf(book.getId()));
                 tenTLTextField.setText(book.getTenTaiLieu());
                 tenNXBTextField.setText(book.getTenNXB());
@@ -44,28 +45,28 @@ public class DocumentViewById extends javax.swing.JFrame {
                 loaiTextField.setText("Sách");
                 tenTGTextField.setText(book.getTenTacGia());
                 trangTextField.setText(String.valueOf(book.getSoTrang()));
-                
+
                 break;
-                
+
             case 2:
                 news = getDocumentByIdService.getNews();
-                
+
                 hidden();
                 ngayPhatHanhTextField.setVisible(true);
                 ngayPhatHanhLabel.setVisible(true);
-                
+
                 maTLTextField.setText(String.valueOf(news.getId()));
                 tenTLTextField.setText(news.getTenTaiLieu());
                 tenNXBTextField.setText(news.getTenNXB());
                 soLuongTextField.setText(String.valueOf(news.getSoLuong()));
                 loaiTextField.setText("Báo");
                 ngayPhatHanhTextField.setText(news.getNgayPhatHanh());
-                
+
                 break;
-                
+
             case 3:
                 magazines = getDocumentByIdService.getMagazines();
-                
+
                 hidden();
                 soPhatHanhTextField.setVisible(true);
                 soPhatHanhLabel.setVisible(true);
@@ -73,7 +74,7 @@ public class DocumentViewById extends javax.swing.JFrame {
                 thangPhatHanhLabel.setVisible(true);
                 namPhatHanhTextField.setVisible(true);
                 namPhatHanhLabel.setVisible(true);
-                
+
                 maTLTextField.setText(String.valueOf(magazines.getId()));
                 tenTLTextField.setText(magazines.getTenTaiLieu());
                 tenNXBTextField.setText(magazines.getTenNXB());
@@ -82,27 +83,27 @@ public class DocumentViewById extends javax.swing.JFrame {
                 soPhatHanhTextField.setText(magazines.getSoPhatHanh());
                 thangPhatHanhTextField.setText(String.valueOf(magazines.getThangPhatHanh()));
                 namPhatHanhTextField.setText(String.valueOf(magazines.getNamPhatHanh()));
-                
+
                 break;
         }
     }
-    
+
     public void hidden() {
         tenTGTextField.setVisible(false);
         tenTGLabel.setVisible(false);
-        
+
         trangTextField.setVisible(false);
         trangLabel.setVisible(false);
-        
+
         soPhatHanhTextField.setVisible(false);
         soPhatHanhLabel.setVisible(false);
-        
+
         thangPhatHanhTextField.setVisible(false);
         thangPhatHanhLabel.setVisible(false);
-        
+
         namPhatHanhTextField.setVisible(false);
         namPhatHanhLabel.setVisible(false);
-        
+
         ngayPhatHanhTextField.setVisible(false);
         ngayPhatHanhLabel.setVisible(false);
     }
@@ -433,95 +434,95 @@ public class DocumentViewById extends javax.swing.JFrame {
         // TODO add your handling code here:
         editButton.setVisible(true);
         editViewButton.setVisible(false);
-        
-        tenTLTextField.setEditable(true);      
+
+        tenTLTextField.setEditable(true);
         tenNXBTextField.setEditable(true);
         soLuongTextField.setEditable(true);
-        
+
         tenTLTextField.setEnabled(true);
         tenNXBTextField.setEnabled(true);
         soLuongTextField.setEnabled(true);
-        switch(id_loai) {
+        switch (id_loai) {
             case 1:
                 tenTGTextField.setEditable(true);
                 trangTextField.setEditable(true);
-                
+
                 tenTGTextField.setEnabled(true);
                 trangTextField.setEnabled(true);
-                
+
                 break;
-                
+
             case 2:
                 ngayPhatHanhTextField.setEditable(true);
                 ngayPhatHanhTextField.setEnabled(true);
-                
+
                 break;
-                
+
             case 3:
                 soPhatHanhTextField.setEditable(true);
                 thangPhatHanhTextField.setEditable(true);
                 namPhatHanhTextField.setEditable(true);
-                
+
                 soPhatHanhTextField.setEnabled(true);
                 thangPhatHanhTextField.setEnabled(true);
                 namPhatHanhTextField.setEnabled(true);
 
-                break; 
+                break;
         }
     }//GEN-LAST:event_editViewButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
-        if(tenTLTextField.getText().equals("") || tenNXBTextField.getText().equals("") || soLuongTextField.getText().equals("")) {
+        if (tenTLTextField.getText().equals("") || tenNXBTextField.getText().equals("") || soLuongTextField.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin", "Lỗi rồi bạn ei", JOptionPane.ERROR_MESSAGE);
         } else {
-            switch(id_loai) {
+            switch (id_loai) {
                 case 1:
-                book = new Book();
-                book.setId(Integer.valueOf(maTLTextField.getText()));
-                book.setTenTaiLieu(tenTLTextField.getText());
-                book.setTenNXB(tenNXBTextField.getText());
-                book.setSoLuong(Integer.valueOf(soLuongTextField.getText()));
-                book.setTenTacGia(tenTGTextField.getText());
-                book.setSoTrang(Integer.valueOf(trangTextField.getText()));
-                try {
-                    documentUpdateService = new DocumentUpdateService(book);
-                } catch (SQLException ex) {
-                    Logger.getLogger(DocumentAdd.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                break;
+                    book = new Book();
+                    book.setId(Integer.valueOf(maTLTextField.getText()));
+                    book.setTenTaiLieu(tenTLTextField.getText());
+                    book.setTenNXB(tenNXBTextField.getText());
+                    book.setSoLuong(Integer.valueOf(soLuongTextField.getText()));
+                    book.setTenTacGia(tenTGTextField.getText());
+                    book.setSoTrang(Integer.valueOf(trangTextField.getText()));
+                    try {
+                        documentUpdateService = new DocumentUpdateService(book);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(DocumentAdd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    break;
 
                 case 2:
-                News news = new News();
-                news.setId(Integer.valueOf(maTLTextField.getText()));
-                news.setTenTaiLieu(tenTLTextField.getText());
-                news.setTenNXB(tenNXBTextField.getText());
-                news.setSoLuong(Integer.valueOf(soLuongTextField.getText()));
-                news.setNgayPhatHanh(ngayPhatHanhTextField.getText());
-                try {
-                    documentUpdateService = new DocumentUpdateService(news);
-                } catch (SQLException ex) {
-                    Logger.getLogger(DocumentAdd.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                break;
+                    News news = new News();
+                    news.setId(Integer.valueOf(maTLTextField.getText()));
+                    news.setTenTaiLieu(tenTLTextField.getText());
+                    news.setTenNXB(tenNXBTextField.getText());
+                    news.setSoLuong(Integer.valueOf(soLuongTextField.getText()));
+                    news.setNgayPhatHanh(ngayPhatHanhTextField.getText());
+                    try {
+                        documentUpdateService = new DocumentUpdateService(news);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(DocumentAdd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    break;
 
                 case 3:
-                Magazines magazines = new Magazines();
-                magazines.setId(Integer.valueOf(maTLTextField.getText()));
-                magazines.setTenTaiLieu(tenTLTextField.getText());
-                magazines.setTenNXB(tenNXBTextField.getText());
-                magazines.setSoLuong(Integer.valueOf(soLuongTextField.getText()));
-                magazines.setSoPhatHanh(soPhatHanhTextField.getText());
-                magazines.setThangPhatHanh(Integer.valueOf(thangPhatHanhTextField.getText()));
-                magazines.setNamPhatHanh(Integer.valueOf(namPhatHanhTextField.getText()));
-                try {
-                    documentUpdateService = new DocumentUpdateService(magazines);
-                } catch (SQLException ex) {
-                    Logger.getLogger(DocumentAdd.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                break;
+                    Magazines magazines = new Magazines();
+                    magazines.setId(Integer.valueOf(maTLTextField.getText()));
+                    magazines.setTenTaiLieu(tenTLTextField.getText());
+                    magazines.setTenNXB(tenNXBTextField.getText());
+                    magazines.setSoLuong(Integer.valueOf(soLuongTextField.getText()));
+                    magazines.setSoPhatHanh(soPhatHanhTextField.getText());
+                    magazines.setThangPhatHanh(Integer.valueOf(thangPhatHanhTextField.getText()));
+                    magazines.setNamPhatHanh(Integer.valueOf(namPhatHanhTextField.getText()));
+                    try {
+                        documentUpdateService = new DocumentUpdateService(magazines);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(DocumentAdd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    break;
             }
-            if(documentUpdateService.getRs() == 1) {
+            if (documentUpdateService.getRs() == 1) {
                 JOptionPane.showMessageDialog(this, "Sửa thông tin thành công", "Thông báo", JOptionPane.CLOSED_OPTION);
                 try {
                     new DocumentView().setVisible(true);

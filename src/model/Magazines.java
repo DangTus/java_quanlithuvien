@@ -1,6 +1,7 @@
 package model;
 
 public class Magazines extends Document {
+
     private String soPhatHanh;
     private int thangPhatHanh;
     private int namPhatHanh;

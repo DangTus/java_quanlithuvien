@@ -9,6 +9,7 @@ import model.Magazines;
 import model.News;
 
 public class DocumentService {
+
     private DocumentDao documentDao;
     Book book = null;
     News news = null;
@@ -17,15 +18,15 @@ public class DocumentService {
     public DocumentService() {
         documentDao = new DocumentDao();
     }
-    
+
     public List<Document> getAll(int idLoai) throws SQLException {
         return documentDao.getAll(idLoai);
     }
-    
+
     public List<String> getCategori() throws SQLException {
         return documentDao.getCategori();
     }
-    
+
     public int deleteDocument(int id) throws SQLException {
         return documentDao.deleteDocument(id);
     }

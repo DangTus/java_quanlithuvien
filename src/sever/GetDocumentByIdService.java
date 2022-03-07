@@ -11,18 +11,19 @@ import model.Magazines;
 import model.News;
 
 public class GetDocumentByIdService {
+
     Book book = null;
     News news = null;
     Magazines magazines = null;
     int idLoai;
     GetDocumentByIdDao getDocumentByIdDao;
-    
+
     public GetDocumentByIdService(int id) throws SQLException {
         getDocumentByIdDao = new GetDocumentByIdDao(id);
-        
+
         idLoai = getDocumentByIdDao.getIdLoai();
-        
-        switch(idLoai) {
+
+        switch (idLoai) {
             case 1:
                 book = getDocumentByIdDao.getBook();
             case 2:

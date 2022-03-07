@@ -13,56 +13,58 @@ import sever.DocumentAddService;
 import sever.DocumentService;
 
 public class DocumentAdd extends javax.swing.JFrame {
+
     DocumentService documentService;
     DocumentAddService documentAddService;
     String ngayHienTai = String.valueOf(java.time.LocalDate.now());
-    
-    public DocumentAdd() { 
+
+    public DocumentAdd() {
         documentService = new DocumentService();
 
         initComponents();
-        
-        hidden();        
+
+        hidden();
         tenTGTextField.setVisible(true);
-        tenTGLabel.setVisible(true);        
+        tenTGLabel.setVisible(true);
         soLuongTextField.setVisible(true);
         trangLabel.setVisible(true);
-        
+
         //select loại
         List<String> categories;
         try {
             categories = documentService.getCategori();
-            for(String categori : categories) {
+            for (String categori : categories) {
                 loaiComboBox.addItem(categori);
             }
         } catch (SQLException ex) {
             Logger.getLogger(DocumentAdd.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         //Gán ngày hiện tại cho input
         ngayPhatHanhTextField.setText(ngayHienTai);
-        
+
     }
+
     public void hidden() {
         tenTGTextField.setVisible(false);
         tenTGLabel.setVisible(false);
-        
+
         trangTextField.setVisible(false);
         trangLabel.setVisible(false);
-        
+
         soPhatHanhTextField.setVisible(false);
         soPhatHanhLabel.setVisible(false);
-        
+
         thangPhatHanhTextField.setVisible(false);
         thangPhatHanhLabel.setVisible(false);
-        
+
         namPhatHanhTextField.setVisible(false);
         namPhatHanhLabel.setVisible(false);
-        
+
         ngayPhatHanhTextField.setVisible(false);
         ngayPhatHanhLabel.setVisible(false);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -318,30 +320,30 @@ public class DocumentAdd extends javax.swing.JFrame {
         // TODO add your handling code here:
         hidden();
         String loai = loaiComboBox.getSelectedItem().toString();
-        switch(loai) {
+        switch (loai) {
             case "Sách":
-            tenTGTextField.setVisible(true);
-            tenTGLabel.setVisible(true);
+                tenTGTextField.setVisible(true);
+                tenTGLabel.setVisible(true);
 
-            trangTextField.setVisible(true);
-            trangLabel.setVisible(true);
-            break;
+                trangTextField.setVisible(true);
+                trangLabel.setVisible(true);
+                break;
 
             case "Tạp chí":
-            soPhatHanhTextField.setVisible(true);
-            soPhatHanhLabel.setVisible(true);
+                soPhatHanhTextField.setVisible(true);
+                soPhatHanhLabel.setVisible(true);
 
-            thangPhatHanhTextField.setVisible(true);
-            thangPhatHanhLabel.setVisible(true);
+                thangPhatHanhTextField.setVisible(true);
+                thangPhatHanhLabel.setVisible(true);
 
-            namPhatHanhTextField.setVisible(true);
-            namPhatHanhLabel.setVisible(true);
-            break;
+                namPhatHanhTextField.setVisible(true);
+                namPhatHanhLabel.setVisible(true);
+                break;
 
             case "Báo":
-            ngayPhatHanhTextField.setVisible(true);
-            ngayPhatHanhLabel.setVisible(true);
-            break;
+                ngayPhatHanhTextField.setVisible(true);
+                ngayPhatHanhLabel.setVisible(true);
+                break;
         }
     }//GEN-LAST:event_loaiComboBoxActionPerformed
 
@@ -359,13 +361,13 @@ public class DocumentAdd extends javax.swing.JFrame {
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // TODO add your handling code here:
-        if(tenTLTextField.getText().equals("") || tenNXBTextField.getText().equals("") || soLuongTextField.getText().equals("")) {
+        if (tenTLTextField.getText().equals("") || tenNXBTextField.getText().equals("") || soLuongTextField.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin", "Lỗi rồi bạn ei", JOptionPane.ERROR_MESSAGE);
         } else {
             String loai = loaiComboBox.getSelectedItem().toString();
-            switch(loai) {                
+            switch (loai) {
                 case "Sách":
-                    Book book = new Book();                    
+                    Book book = new Book();
                     book.setTenTaiLieu(tenTLTextField.getText());
                     book.setTenNXB(tenNXBTextField.getText());
                     book.setSoLuong(Integer.valueOf(soLuongTextField.getText()));
@@ -379,7 +381,6 @@ public class DocumentAdd extends javax.swing.JFrame {
                     }
                     break;
 
-                    
                 case "Báo":
                     News news = new News();
                     news.setTenTaiLieu(tenTLTextField.getText());
@@ -393,7 +394,7 @@ public class DocumentAdd extends javax.swing.JFrame {
                         Logger.getLogger(DocumentAdd.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     break;
-                    
+
                 case "Tạp chí":
                     Magazines magazines = new Magazines();
                     magazines.setTenTaiLieu(tenTLTextField.getText());
@@ -410,7 +411,7 @@ public class DocumentAdd extends javax.swing.JFrame {
                     }
                     break;
             }
-            if(documentAddService.getRs() == 1) {
+            if (documentAddService.getRs() == 1) {
                 JOptionPane.showMessageDialog(this, "Thêm thành công", "Thông báo", JOptionPane.CLOSED_OPTION);
                 try {
                     new DocumentView().setVisible(true);
@@ -419,14 +420,14 @@ public class DocumentAdd extends javax.swing.JFrame {
                     Logger.getLogger(DocumentAdd.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
                     Logger.getLogger(DocumentAdd.class.getName()).log(Level.SEVERE, null, ex);
-                }                
+                }
             }
         }
     }//GEN-LAST:event_createButtonActionPerformed
 
     private void ngayPhatHanhTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ngayPhatHanhTextFieldFocusGained
         // TODO add your handling code here:        
-        if(ngayHienTai.equals(ngayPhatHanhTextField.getText())) {
+        if (ngayHienTai.equals(ngayPhatHanhTextField.getText())) {
             ngayPhatHanhTextField.setText("");
             ngayPhatHanhTextField.setForeground(new Color(0, 0, 0));
         }
@@ -434,7 +435,7 @@ public class DocumentAdd extends javax.swing.JFrame {
 
     private void ngayPhatHanhTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ngayPhatHanhTextFieldFocusLost
         // TODO add your handling code here:
-        if(ngayPhatHanhTextField.getText().equals("")) {
+        if (ngayPhatHanhTextField.getText().equals("")) {
             ngayPhatHanhTextField.setText(ngayHienTai);
             ngayPhatHanhTextField.setForeground(new Color(153, 153, 153));
         }

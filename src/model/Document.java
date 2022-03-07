@@ -1,6 +1,7 @@
 package model;
 
 public class Document {
+
     private int id;
     private String tenTaiLieu;
     private String tenNXB;

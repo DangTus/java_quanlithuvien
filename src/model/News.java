@@ -3,6 +3,7 @@ package model;
 import java.time.LocalDate;
 
 public class News extends Document {
+
     private String ngayPhatHanh;
 
     public String getNgayPhatHanh() {

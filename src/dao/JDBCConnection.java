@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class JDBCConnection {
+
     public static Connection getJDBCConnection() {
         final String url = "jdbc:mysql://localhost:3306/java.quanlithuvien";
         final String user = "root";

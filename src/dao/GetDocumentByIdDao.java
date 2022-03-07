@@ -9,27 +9,28 @@ import model.Magazines;
 import model.News;
 
 public class GetDocumentByIdDao {
+
     Book book = null;
     News news = null;
     Magazines magazines = null;
     int idLoai;
-    
+
     public GetDocumentByIdDao(int id) throws SQLException {
         Connection con = JDBCConnection.getJDBCConnection();
-        
+
         String sql = "SELECT * FROM tai_lieu WHERE id = ?";
-        
+
         PreparedStatement preparedStatement = con.prepareStatement(sql);
-        
+
         preparedStatement.setInt(1, id);
-        
+
         ResultSet rs = preparedStatement.executeQuery();
-        
+
         rs.next();
-        
+
         idLoai = rs.getInt("id_loai");
-        
-        switch(idLoai) {
+
+        switch (idLoai) {
             case 1:
                 book = new Book();
                 book.setId(rs.getInt("id"));
@@ -39,7 +40,7 @@ public class GetDocumentByIdDao {
                 book.setIdLoai(rs.getInt("id_loai"));
                 book.setTenTacGia(rs.getString("ten_tac_gia"));
                 book.setSoTrang(rs.getInt("so_trang"));
-            
+
             case 2:
                 news = new News();
                 news.setId(rs.getInt("id"));
@@ -48,7 +49,7 @@ public class GetDocumentByIdDao {
                 news.setSoLuong(rs.getInt("so_luong"));
                 news.setIdLoai(rs.getInt("id_loai"));
                 news.setNgayPhatHanh(rs.getString("ngay_phat_hanh"));
-                
+
             case 3:
                 magazines = new Magazines();
                 magazines.setId(rs.getInt("id"));
@@ -59,7 +60,7 @@ public class GetDocumentByIdDao {
                 magazines.setSoPhatHanh(rs.getString("so_phat_hanh"));
                 magazines.setThangPhatHanh(rs.getInt("thang_phat_hanh"));
                 magazines.setNamPhatHanh(rs.getInt("nam_phat_hanh"));
-        }        
+        }
     }
 
     public Book getBook() {

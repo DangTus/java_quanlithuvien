@@ -11,46 +11,49 @@ import model.Document;
 import sever.DocumentService;
 
 public class DocumentView extends javax.swing.JFrame {
+
     DocumentService documentService;
     DefaultTableModel defaultTableModel;
 
-    public DocumentView() throws ClassNotFoundException, SQLException{
+    public DocumentView() throws ClassNotFoundException, SQLException {
         initComponents();
-        documentService = new DocumentService();        
-        defaultTableModel = new DefaultTableModel(){
+        documentService = new DocumentService();
+        defaultTableModel = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) { //Cái này là để k cho sửa trực tiếp trên bảng
                 return false;
             }
         };
-        userTable.setModel(defaultTableModel);   
+        userTable.setModel(defaultTableModel);
         // Tạo hàng tiêu đề
         defaultTableModel.addColumn("id");
         defaultTableModel.addColumn("Tên tài liệu");
         defaultTableModel.addColumn("Tên nhà xuất bản");
-        defaultTableModel.addColumn("Số lượng");        
+        defaultTableModel.addColumn("Số lượng");
         showTableData(0); // Đổ dữ liệu vào bảng
-        
+
         // select thể loại
         chonLoaiCombobox.addItem("Tất cả");
         List<String> categories = documentService.getCategori();
-        for(String categori : categories) {
+        for (String categori : categories) {
             chonLoaiCombobox.addItem(categori);
         }
     }
+
     // Hàm này dùng để đổ dữ liệu vào bảng
     private void showTableData(int idLoai) throws ClassNotFoundException, SQLException {
-        if(documentService.getAll(idLoai).size() == 0) { // Kiểm tra xem có dữ liệu không
+        if (documentService.getAll(idLoai).size() == 0) { // Kiểm tra xem có dữ liệu không
             defaultTableModel.addRow(new Object[]{"Không có sách"});
         } else {
             setTableData(documentService.getAll(idLoai));
         }
     }
+
     // Hàm này dùng để đổ dữ liệu từng dòng
     private void setTableData(List<Document> documents) {
-        for(Document document : documents) {
-            defaultTableModel.addRow(new Object[]{document.getId(), document.getTenTaiLieu()
-                                                , document.getTenNXB(), document.getSoLuong()});
+        for (Document document : documents) {
+            defaultTableModel.addRow(new Object[]{document.getId(), document.getTenTaiLieu(),
+                 document.getTenNXB(), document.getSoLuong()});
         }
     }
 
@@ -199,29 +202,29 @@ public class DocumentView extends javax.swing.JFrame {
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
         // TODO add your handling code here:
         int row = userTable.getSelectedRow(); //Xác định hàng mà mình đã chọn
-        if(row == -1) {
+        if (row == -1) {
             JOptionPane.showMessageDialog(this, "Chọn tài liệu cần xem trước đi bạn ei", "Lỗi rồi bạn ei", JOptionPane.ERROR_MESSAGE);
         } else {
             int id = Integer.valueOf(String.valueOf(userTable.getValueAt(row, 0)));
-            
+
             try {
                 new DocumentViewById(id).setVisible(true); // Chuyển qua trang xem
                 this.dispose(); // Đóng trang hiện tại
             } catch (SQLException ex) {
                 Logger.getLogger(DocumentView.class.getName()).log(Level.SEVERE, null, ex);
-            }            
+            }
         }
     }//GEN-LAST:event_viewButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
         int row = userTable.getSelectedRow(); //Xác định hàng mà mình đã chọn
-        if(row == -1) {
+        if (row == -1) {
             JOptionPane.showMessageDialog(this, "Chọn tài liệu cần xóa trước đi bạn ei", "Lỗi rồi bạn ei", JOptionPane.ERROR_MESSAGE);
         } else {
             int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa không?", "Thông báo", JOptionPane.YES_NO_OPTION); //Xác nhận xóa
-            
-            if(confirm == 0) {
+
+            if (confirm == 0) {
                 int id = Integer.valueOf(String.valueOf(userTable.getValueAt(row, 0)));
                 try {
                     int rs = documentService.deleteDocument(id);
@@ -232,7 +235,7 @@ public class DocumentView extends javax.swing.JFrame {
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(DocumentView.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                              
+
             }
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
@@ -241,7 +244,7 @@ public class DocumentView extends javax.swing.JFrame {
         // TODO add your handling code here:
         String loai = chonLoaiCombobox.getSelectedItem().toString();
         int idLoai = 0;
-        switch(loai) {
+        switch (loai) {
             case "Tất cả":
                 idLoai = 0;
                 break;
@@ -268,7 +271,7 @@ public class DocumentView extends javax.swing.JFrame {
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         // TODO add your handling code here:
         int q = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thoát không?", "Thông báo", JOptionPane.YES_NO_OPTION);
-        if(q==0) {
+        if (q == 0) {
             exit(0);
         }
     }//GEN-LAST:event_exitButtonActionPerformed

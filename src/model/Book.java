@@ -1,6 +1,7 @@
 package model;
 
-public class Book extends Document {    
+public class Book extends Document {
+
     private String tenTacGia;
     private int soTrang;
 
